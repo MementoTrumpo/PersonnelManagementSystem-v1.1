@@ -9,9 +9,47 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\Montserrat-Regular.ttf" />
+    <None Remove="Fonts\Racama.otf" />
+    <None Remove="Images\account.png" />
+    <None Remove="Images\hide_password.png" />
+    <None Remove="Images\logo2.png" />
+    <None Remove="Images\padlock %281%29.png" />
+    <None Remove="Images\padlockLogo.png" />
+    <None Remove="Images\userLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\account.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\hide_password.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\padlock (1).png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
-    <Folder Include="Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Fonts\Racama.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Fonts\Montserrat-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\loginView.jpg" />
+    <Resource Include="Images\padlockLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\userLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Images\logo2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

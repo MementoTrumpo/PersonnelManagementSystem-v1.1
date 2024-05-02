@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:PersonnelManagementSystem"
              StartupUri="View/LoginView.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="Racama">.Fonts/Racama.otf#Racama</FontFamily>
     </Application.Resources>
 </Application>
