@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PersonnelManagementSystem.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
@@ -6,6 +7,10 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using PersonnelManagementSystem.Repositories;
+using System.Net;
+using System.Threading;
+using System.Security.Principal;
 
 namespace PersonnelManagementSystem.ViewModel
 {
@@ -19,6 +24,8 @@ namespace PersonnelManagementSystem.ViewModel
         private string _errorMessage;
 
         private bool _isMessageVisible = true;
+
+        private IUserRepository _userRepository;
 
         // Properties
         public string UserName
@@ -74,13 +81,14 @@ namespace PersonnelManagementSystem.ViewModel
         // Constructors
         public LoginViewModel()
         {
+            _userRepository = new UserRepository();
             LoginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
             RecoverPasswordCommand = new ViewModelCommand(p => ExecuteRecoverPasswordCommand("", ""));
         }
 
         private void ExecuteRecoverPasswordCommand(string userName, string email)
         {
-
+            throw new NotImplementedException();
         }
 
         private bool CanExecuteLoginCommand(object obj)
@@ -101,7 +109,17 @@ namespace PersonnelManagementSystem.ViewModel
 
         private void ExecuteLoginCommand(object obj)
         {
-            throw new NotImplementedException();
+            var isValidUser = _userRepository.AuthenticateUser(new NetworkCredential(UserName, Password));
+            if (isValidUser)
+            {
+                Thread.CurrentPrincipal = new GenericPrincipal(
+                    new GenericIdentity(UserName), null);
+                IsMessageVisible = false;
+            }
+            else
+            {
+                ErrorMessage = "* Неправильное Имя пользователя или Пароль";
+            }
         }
     }
 }

@@ -30,7 +30,7 @@
         <Binding
             Converter="{StaticResource ResourceKey=BooleanToVisibility}"
             Mode="TwoWay"
-            Path="IsVisible" />
+            Path="IsPathVisible" />
     </Window.Visibility>
 
     <Border CornerRadius="15">
@@ -185,6 +185,7 @@
                         VerticalAlignment="Center"
                         FontFamily="Segoe UI Variable Display"
                         FontSize="14"
+                        FontWeight="Medium"
                         Foreground="DarkGray"
                         Text="Имя пользователя" />
 
@@ -204,7 +205,7 @@
                         FontWeight="Medium"
                         Foreground="White"
                         SnapsToDevicePixels="True"
-                        Text="{Binding UserName}">
+                        Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}">
 
                         <TextBox.Background>
 
@@ -225,6 +226,7 @@
                         VerticalAlignment="Center"
                         FontFamily="Segoe UI Variable Display"
                         FontSize="14"
+                        FontWeight="Medium"
                         Foreground="DarkGray"
                         Text="Пароль" />
 
@@ -233,15 +235,24 @@
                         Margin="0,5,0,0"
                         Password="{Binding Password}" />
 
+                    <TextBlock
+                        Margin="10,10,0,0"
+                        FontFamily="Segoe UI Variable Display"
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Foreground="#D7596D"
+                        Text="{Binding ErrorMessage}"
+                        TextWrapping="Wrap" />
+
 
 
                     <Button
                         x:Name="buttonLogin"
                         Grid.Column="2"
-                        Margin="0,50,0,0"
+                        Margin="0,30,0,0"
                         HorizontalContentAlignment="Center"
                         BorderThickness="0"
-                        Click="buttonClose_Click"
+                        Command="{Binding LoginCommand}"
                         Content="Войти"
                         Cursor="Hand"
                         FontFamily="Segoe UI Variable Display"
