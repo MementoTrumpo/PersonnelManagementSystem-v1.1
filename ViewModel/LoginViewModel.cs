@@ -23,18 +23,18 @@ namespace PersonnelManagementSystem.ViewModel
 
         private string _errorMessage;
 
-        private bool _isMessageVisible = true;
+        private bool _isViewVisible = true;
 
         private IUserRepository _userRepository;
 
         // Properties
-        public string UserName
+        public string Username
         {
             get => _username;
             set 
             { 
                 _username = value; 
-                OnPropertyChanged(nameof(UserName));
+                OnPropertyChanged(nameof(Username));
             }
         }
         public SecureString Password 
@@ -55,13 +55,13 @@ namespace PersonnelManagementSystem.ViewModel
                 OnPropertyChanged(nameof(ErrorMessage));
             }
         }
-        public bool IsMessageVisible 
+        public bool IsViewVisible
         { 
-            get => _isMessageVisible;
+            get => _isViewVisible;
             set
             {
-                _isMessageVisible = value;
-                OnPropertyChanged(nameof(IsMessageVisible));
+                _isViewVisible = value;
+                OnPropertyChanged(nameof(IsViewVisible));
             } 
         }
 
@@ -94,7 +94,7 @@ namespace PersonnelManagementSystem.ViewModel
         private bool CanExecuteLoginCommand(object obj)
         {
             bool validData;
-            if (string.IsNullOrEmpty(UserName) || UserName.Length < 3 ||
+            if (string.IsNullOrEmpty(Username) || Username.Length < 3 ||
                 Password == null || Password.Length < 3)
             {
                 validData = false;
@@ -109,16 +109,16 @@ namespace PersonnelManagementSystem.ViewModel
 
         private void ExecuteLoginCommand(object obj)
         {
-            var isValidUser = _userRepository.AuthenticateUser(new NetworkCredential(UserName, Password));
+            var isValidUser = _userRepository.AuthenticateUser(new NetworkCredential(Username, Password));
             if (isValidUser)
             {
                 Thread.CurrentPrincipal = new GenericPrincipal(
-                    new GenericIdentity(UserName), null);
-                IsMessageVisible = false;
+                    new GenericIdentity(Username),null);
+                IsViewVisible = false;
             }
             else
             {
-                ErrorMessage = "* Неправильное Имя пользователя или Пароль";
+                ErrorMessage = "* Неверное Имя пользователя или Пароль";
             }
         }
     }

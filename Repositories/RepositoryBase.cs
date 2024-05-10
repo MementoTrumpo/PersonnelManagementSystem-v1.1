@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -19,6 +20,7 @@ namespace PersonnelManagementSystem.Repositories
 
         protected SqlConnection GetConnection()
         {
+            
             return new SqlConnection(_connectionString);
         }
     }

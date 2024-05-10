@@ -25,7 +25,7 @@ namespace PersonnelManagementSystem.Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "select * from  [User] where username=@username and [password]=@password";
+                command.CommandText = "select * from  [User] where name_user=@username and [password]=@password";
                 command.Parameters.Add("@username", SqlDbType.NVarChar).Value = credential.UserName;
                 command.Parameters.Add("@password", SqlDbType.NVarChar).Value = credential.Password;
                 validUser = command.ExecuteScalar() == null ? false : true;
@@ -50,7 +50,33 @@ namespace PersonnelManagementSystem.Repositories
 
         public UserModel GetByUserName(string userName)
         {
-            throw new NotImplementedException();
+            UserModel user = null;
+            using (var connection = GetConnection())
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "select * from  [User] where name_user=@username";
+                command.Parameters.Add("@username", SqlDbType.NVarChar).Value = userName;
+                using(var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        user = new UserModel()
+                        {
+                            Id = reader[0].ToString(),
+                            UserName = reader[1].ToString(),
+                            Password = string.Empty,
+                            FirstName = reader[3].ToString(),
+                            LastName = reader[4].ToString(),
+                            Email = reader[5].ToString(),
+
+                        };
+
+                    }
+                }
+            }
+            return user;
         }
 
         public void Remove(int id)

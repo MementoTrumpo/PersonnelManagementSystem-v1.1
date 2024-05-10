@@ -30,7 +30,7 @@
         <Binding
             Converter="{StaticResource ResourceKey=BooleanToVisibility}"
             Mode="TwoWay"
-            Path="IsPathVisible" />
+            Path="IsViewVisible" />
     </Window.Visibility>
 
     <Border CornerRadius="15">
@@ -45,17 +45,16 @@
             Opacity="0.95">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
-                    <GradientStop Offset="0" Color="#462AD8" />
-                    <GradientStop Offset="0.75" Color="#DA34AE" />
-                    <GradientStop Offset="1" Color="#8A16C1" />
+                    <GradientStop Offset="0" Color="{StaticResource windBorderColor1}" />
+                    <GradientStop Offset="0.75" Color="{StaticResource windBorderColor2}" />
+                    <GradientStop Offset="1" Color="{StaticResource windBorderColor3}" />
                 </LinearGradientBrush>
             </Border.BorderBrush>
 
             <Border.Background>
                 <LinearGradientBrush StartPoint="0, 1" EndPoint="1, 0">
-                    <GradientStop Offset="0" Color="#060531" />
-                    <GradientStop Offset="0.75" Color="#1B1448" />
-
+                    <GradientStop Offset="0" Color="{StaticResource primaryBackColor1}" />
+                    <GradientStop Offset="0.75" Color="{StaticResource primaryBackColor2}" />
 
                 </LinearGradientBrush>
             </Border.Background>
@@ -77,7 +76,7 @@
                         Grid.Column="0"
                         Margin="10,0,0,0"
                         VerticalAlignment="Center"
-                        FontFamily="Segoe UI Variable Display"
+                        FontFamily="Montserrat"
                         FontSize="20"
                         Foreground="DarkGray"
                         Text="LOG IN" />
@@ -174,7 +173,7 @@
                     <TextBlock
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        FontFamily="Segoe UI Variable Display"
+                        FontFamily="Montserrat"
                         FontSize="21"
                         Foreground="DarkGray"
                         Text="HR GENIUS" />
@@ -183,7 +182,7 @@
                         Margin="10,30,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        FontFamily="Segoe UI Variable Display"
+                        FontFamily="Montserrat"
                         FontSize="14"
                         FontWeight="Medium"
                         Foreground="DarkGray"
@@ -200,12 +199,12 @@
                         BorderBrush="DarkGray"
                         BorderThickness="0,0,0,1"
                         CaretBrush="LightGray"
-                        FontFamily="Segoe UI Variable Display"
+                        FontFamily="Montserrat"
                         FontSize="15"
                         FontWeight="Medium"
                         Foreground="White"
                         SnapsToDevicePixels="True"
-                        Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}">
+                        Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}">
 
                         <TextBox.Background>
 
@@ -224,7 +223,7 @@
                         Margin="10,15,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        FontFamily="Segoe UI Variable Display"
+                        FontFamily="Montserrat"
                         FontSize="14"
                         FontWeight="Medium"
                         Foreground="DarkGray"
@@ -233,7 +232,7 @@
                     <local:BindablePasswordBox
                         Height="28"
                         Margin="0,5,0,0"
-                        Password="{Binding Password}" />
+                        Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                     <TextBlock
                         Margin="10,10,0,0"
@@ -255,7 +254,7 @@
                         Command="{Binding LoginCommand}"
                         Content="Войти"
                         Cursor="Hand"
-                        FontFamily="Segoe UI Variable Display"
+                        FontFamily="Montserrat"
                         FontSize="17"
                         Foreground="White"
                         Opacity="1">
@@ -291,7 +290,7 @@
                         HorizontalAlignment="Center"
                         Orientation="Horizontal">
                         <TextBlock
-                            FontFamily="Segoe UI Variable Display"
+                            FontFamily="Montserrat"
                             FontSize="12"
                             FontWeight="Medium"
                             Foreground="DarkGray"
@@ -300,7 +299,7 @@
                         <TextBlock
                             Margin="8,0,0,0"
                             Cursor="Hand"
-                            FontFamily="Segoe UI Variable Display"
+                            FontFamily="Montserrat"
                             FontSize="12"
                             FontWeight="Medium"
                             Foreground="White"
