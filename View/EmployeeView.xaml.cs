@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PersonnelManagementSystem.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace PersonnelManagementSystem.View
         public EmployeeView()
         {
             InitializeComponent();
+        }
+
+        
+        private void TextBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace PersonnelManagementSystem.ViewModel
 {
@@ -16,6 +17,7 @@ namespace PersonnelManagementSystem.ViewModel
         private string _middleName;
         private string _email;
         private string _phoneNumber;
+        private string _textBoxText;
 
         private IEmployeeRepository _employeeRepository;
 
@@ -74,10 +76,33 @@ namespace PersonnelManagementSystem.ViewModel
                 _phoneNumber = value;
                 OnPropertyChanged(nameof(PhoneNumber));
             }
-
         }
 
-        
+        public string TextBoxText
+        {
+            get => _textBoxText;
+            set
+            {
+                _textBoxText = value;
+                OnPropertyChanged(nameof(TextBoxText));
+            }
+        }
+
+        // Commands
+        public ICommand ClearTextBoxTextCommand { get; }
+
+       // Constructor
+       public EmployeeViewModel()
+        {
+            ClearTextBoxTextCommand = new ViewModelCommand(ExecuteClearTextBoxTextCommand);
+        }
+
+        // Realizations
+
+        private void ExecuteClearTextBoxTextCommand(object obj)
+        {
+            TextBoxText = string.Empty;
+        }
 
     }
 }

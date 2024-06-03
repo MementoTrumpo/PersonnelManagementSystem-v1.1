@@ -12,15 +12,19 @@ namespace PersonnelManagementSystem.Model
     public enum MartialStatus
     {
         /// <summary>
-        /// Холост
+        /// Холост (для мужчины)
         /// </summary>
         Single,
         /// <summary>
-        /// Женат
+        /// Женат (для мужчины)
         /// </summary>
         Married,
         /// <summary>
-        /// Разведен
+        /// Не замужем (для женщины)
+        /// </summary>
+        NotMarried,
+        /// <summary>
+        /// В разводе (для обоих)
         /// </summary>
         Divorced
 

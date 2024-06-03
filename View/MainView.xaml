@@ -88,9 +88,9 @@
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color2}">
+                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color10}">
                         <StackPanel Orientation="Horizontal">
-                            <fa:IconImage Icon="IdCard" Style="{StaticResource menuButtonIcon}" />
+                            <fa:IconImage Icon="FileLines" Style="{StaticResource menuButtonIcon}" />
                             <TextBlock Style="{StaticResource menuButtonText}" Text="Документы" />
                         </StackPanel>
                     </RadioButton>

@@ -99,7 +99,7 @@ namespace PersonnelManagementSystem.ViewModel
 
         private void LoadCurrentUserData()
         {
-            var user = userRepository.GetByUserName(Thread.CurrentPrincipal.Identity.Name);
+            UserModel user = null; /*userRepository.GetByUserName(Thread.CurrentPrincipal.Identity.Name);*/
             if(user != null)
             {
                 CurrentUserAccount.Username = user.UserName;

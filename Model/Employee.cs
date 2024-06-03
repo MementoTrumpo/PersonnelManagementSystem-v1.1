@@ -13,7 +13,8 @@ namespace PersonnelManagementSystem.Model
         public MartialStatus MartialStatus { get; set; }
         public string Post { get; set; }
         public string Department { get; set; }
-        public DateTime HireDate { get; set; }
+        public DateOnly HireDate { get; set; }
+        public DateOnly DateOfLeaving { get; set; }
         public decimal Salary { get; set; }
         public string CellPhoneNumber { get; set; }
         public string? HomeNumber { get; set; }
