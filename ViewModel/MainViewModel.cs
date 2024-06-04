@@ -67,6 +67,7 @@ namespace PersonnelManagementSystem.ViewModel
         public ICommand ShowEmployeeViewCommand { get; }
         public ICommand ShowPersonalCardViewCommand { get; }
 
+        
         public MainViewModel()
         {
             userRepository = new UserRepository();
@@ -85,8 +86,8 @@ namespace PersonnelManagementSystem.ViewModel
         private void ExecuteShowPersonalCardViewCommand(object obj)
         {
             CurrentChildView = new EmployeeViewModel();
-            Caption = "Сотрудники";
-            Icon = IconChar.Users;
+            Caption = "Личная карточка";
+            Icon = IconChar.IdCard;
          
         }
 

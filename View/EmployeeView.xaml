@@ -50,7 +50,7 @@
                 VerticalAlignment="Top"
                 BorderThickness="0"
                 Command="{Binding LoginCommand}"
-                Content="Search"
+                Content="Поиск"
                 Cursor="Hand"
                 FontFamily="Montserrat"
                 FontSize="12"
@@ -59,11 +59,11 @@
         </Grid>
         <Border
             Grid.Row="1"
-            Padding="10"
-            Background="#200F53"
+            Padding="8"
+            Background="{StaticResource panelColor}"
             CornerRadius="10">
             <DataGrid
-                Background="#200F53"
+                Background="{StaticResource panelColor}"
                 BorderThickness="0"
                 ColumnWidth="*">
                 <DataGrid.ColumnHeaderStyle>
@@ -84,11 +84,11 @@
                     <DataGridTextColumn
                         Binding="{x:Null}"
                         ClipboardContentBinding="{x:Null}"
-                        Header="Имя" />
+                        Header="Фамилия" />
                     <DataGridTextColumn
                         Binding="{x:Null}"
                         ClipboardContentBinding="{x:Null}"
-                        Header="Фамилия" />
+                        Header="Имя" />
                     <DataGridTextColumn
                         Binding="{x:Null}"
                         ClipboardContentBinding="{x:Null}"
@@ -103,7 +103,7 @@
                         Header="Email" />
                 </DataGrid.Columns>
             </DataGrid>
-            
+
         </Border>
     </Grid>
 

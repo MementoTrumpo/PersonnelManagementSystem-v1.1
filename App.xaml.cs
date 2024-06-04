@@ -23,8 +23,8 @@ namespace PersonnelManagementSystem
             //        loginView.Close();
             //    }
             //};
-            var mainView = new MainView();
-            mainView.Show();
+            //var mainView = new MainView();
+            //mainView.Show();
         }
     }
 

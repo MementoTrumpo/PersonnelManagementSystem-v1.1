@@ -23,12 +23,16 @@
 
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModel:EmployeeViewModel}">
-            <local:EmployeeView/>
+            <local:EmployeeView />
         </DataTemplate>
 
-   
+        <DataTemplate DataType="{x:Type viewModel:MainViewModel}">
+            <local:MainView />
+        </DataTemplate>
+
+
     </Window.Resources>
-    
+
 
     <Border BorderThickness="2" CornerRadius="13">
         <Border.BorderBrush>
@@ -73,18 +77,19 @@
                             Foreground="{StaticResource titleColor1}"
                             Text="HR Genius" />
                     </StackPanel>
-                    <!--  Menu Buttons  -->
-                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color1}">
-                        <StackPanel Orientation="Horizontal">
-                            <fa:IconImage Icon="Users" Style="{StaticResource menuButtonIcon}" />
-                            <TextBlock Style="{StaticResource menuButtonText}" Text="Сотрудники" />
-                        </StackPanel>
-                    </RadioButton>
 
+                    <!--  Menu Buttons  -->
                     <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color2}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="IdCard" Style="{StaticResource menuButtonIcon}" />
                             <TextBlock Style="{StaticResource menuButtonText}" Text="Личная карточка" />
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color1}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Users" Style="{StaticResource menuButtonIcon}" />
+                            <TextBlock Style="{StaticResource menuButtonText}" Text="Сотрудники" />
                         </StackPanel>
                     </RadioButton>
 
@@ -95,14 +100,7 @@
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color3}">
-                        <StackPanel Orientation="Horizontal">
-                            <fa:IconImage Icon="UserPlus" Style="{StaticResource menuButtonIcon}" />
-                            <TextBlock Style="{StaticResource menuButtonText}" Text="Создание" />
-                        </StackPanel>
-                    </RadioButton>
-
-                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color4}">
+                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color11}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="AddressBook" Style="{StaticResource menuButtonIcon}" />
                             <TextBlock Style="{StaticResource menuButtonText}" Text="Приём" />
@@ -115,15 +113,13 @@
                             <TextBlock Style="{StaticResource menuButtonText}" Text="Перевод" />
                         </StackPanel>
                     </RadioButton>
-                    
+
                     <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color6}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="UserMinus" Style="{StaticResource menuButtonIcon}" />
                             <TextBlock Style="{StaticResource menuButtonText}" Text="Увольнение" />
                         </StackPanel>
                     </RadioButton>
-                    
-                    
 
                     <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color7}">
                         <StackPanel Orientation="Horizontal">
@@ -131,9 +127,6 @@
                             <TextBlock Style="{StaticResource menuButtonText}" Text="О программе" />
                         </StackPanel>
                     </RadioButton>
-
-
-
 
                 </StackPanel>
             </Border>
@@ -199,7 +192,7 @@
                             <ColumnDefinition />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        
+
                         <!--  Caption  -->
                         <StackPanel
                             Grid.Column="0"
@@ -218,8 +211,6 @@
                                 FontWeight="Medium"
                                 Foreground="{StaticResource titleColor2}"
                                 Text="{Binding Caption}" />
-
-
                         </StackPanel>
                         <StackPanel
                             Grid.Column="1"
@@ -248,11 +239,10 @@
                         </StackPanel>
                     </Grid>
 
-                    <ContentControl Content="{Binding CurrentChildView}"
-                                    Grid.Row="2"
-                                    Margin="25">
-                        
-                    </ContentControl>
+                    <ContentControl
+                        Grid.Row="2"
+                        Margin="25"
+                        Content="{Binding CurrentChildView}" />
                 </Grid>
             </Border>
 
