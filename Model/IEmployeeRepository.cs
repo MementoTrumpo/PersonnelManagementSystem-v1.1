@@ -8,7 +8,7 @@ namespace PersonnelManagementSystem.Model
 {
     public interface IEmployeeRepository
     {
-        public void Add(Employee employee);
+        public void Add(EmployeeModel employee);
         public void Remove(int id);
         
     }

@@ -64,8 +64,19 @@ namespace PersonnelManagementSystem.ViewModel
         }
 
         // Commands
+
+        /// <summary>
+        /// Отображение формы информации всех сотрудников
+        /// </summary>
         public ICommand ShowEmployeeViewCommand { get; }
+        /// <summary>
+        /// Отображение карточки с информацией о сотруднике
+        /// </summary>
         public ICommand ShowPersonalCardViewCommand { get; }
+        /// <summary>
+        /// Отображение формы добавление сотрудника
+        /// </summary>
+        public ICommand ShowHiringEmployeeViewCommand { get; }
 
         
         public MainViewModel()

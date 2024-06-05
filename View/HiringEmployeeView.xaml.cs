@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
 
 namespace PersonnelManagementSystem.View
 {
@@ -20,9 +21,25 @@ namespace PersonnelManagementSystem.View
     /// </summary>
     public partial class HiringEmployeeView : UserControl
     {
+        private SqlConnection _connection;
         public HiringEmployeeView()
         {
             InitializeComponent();
+
+            // Подключение к SQL Server
+            //_connection = new SqlConnection("Data Source=localhost;Initial Catalog=MyDatabase;Integrated Security=True");
+            //_connection.Open();
+
+            // Заполнение ComboBox данными из таблицы
+            FillComboBoxWithTableData();
+
         }
+
+        private void FillComboBoxWithTableData()
+        {
+          
+        }
+
+        
     }
 }

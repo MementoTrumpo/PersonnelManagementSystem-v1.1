@@ -89,12 +89,12 @@ namespace PersonnelManagementSystem.ViewModel
         }
 
         // Commands
-        public ICommand ClearTextBoxTextCommand { get; }
+        public ICommand ShowEmployees { get; }
 
        // Constructor
        public EmployeeViewModel()
         {
-            ClearTextBoxTextCommand = new ViewModelCommand(ExecuteClearTextBoxTextCommand);
+
         }
 
         // Realizations
