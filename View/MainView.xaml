@@ -26,8 +26,12 @@
             <local:EmployeeView />
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type viewModel:MainViewModel}">
-            <local:MainView />
+        <DataTemplate DataType="{x:Type viewModel:HiringEmployeeViewModel}">
+            <local:HiringEmployeeView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:PersonalCardViewModel}">
+            <local:PersonalCardView />
         </DataTemplate>
 
 
@@ -79,14 +83,21 @@
                     </StackPanel>
 
                     <!--  Menu Buttons  -->
-                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color2}">
+                    <RadioButton
+                        Command="{Binding ShowPersonalCardViewCommand}"
+                        Style="{StaticResource menuButton}"
+                        Tag="{StaticResource color2}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="IdCard" Style="{StaticResource menuButtonIcon}" />
                             <TextBlock Style="{StaticResource menuButtonText}" Text="Личная карточка" />
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color1}">
+                    <RadioButton
+                        Command="{Binding ShowEmployeeViewCommand}"
+                        IsChecked="True"
+                        Style="{StaticResource menuButton}"
+                        Tag="{StaticResource color1}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="Users" Style="{StaticResource menuButtonIcon}" />
                             <TextBlock Style="{StaticResource menuButtonText}" Text="Сотрудники" />
@@ -100,7 +111,10 @@
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color11}">
+                    <RadioButton
+                        Command="{Binding ShowHiringEmployeeViewCommand}"
+                        Style="{StaticResource menuButton}"
+                        Tag="{StaticResource color11}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="AddressBook" Style="{StaticResource menuButtonIcon}" />
                             <TextBlock Style="{StaticResource menuButtonText}" Text="Приём" />

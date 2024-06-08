@@ -17,8 +17,7 @@ namespace PersonnelManagementSystem.ViewModel
         private string _middleName;
         private string _email;
         private string _phoneNumber;
-        private string _textBoxText;
-
+        
         private IEmployeeRepository _employeeRepository;
 
         // Properties
@@ -78,31 +77,19 @@ namespace PersonnelManagementSystem.ViewModel
             }
         }
 
-        public string TextBoxText
-        {
-            get => _textBoxText;
-            set
-            {
-                _textBoxText = value;
-                OnPropertyChanged(nameof(TextBoxText));
-            }
-        }
-
+        
         // Commands
         public ICommand ShowEmployees { get; }
 
        // Constructor
        public EmployeeViewModel()
-        {
+       {
 
-        }
+       }
 
         // Realizations
 
-        private void ExecuteClearTextBoxTextCommand(object obj)
-        {
-            TextBoxText = string.Empty;
-        }
+        
 
     }
 }

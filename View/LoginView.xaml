@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:PersonnelManagementSystem.CustomControls"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:PersonnelManagementSystem.ViewModel"
     Title="LoginView"
@@ -189,13 +190,13 @@
                         Text="Имя пользователя" />
 
                     <TextBox
-                        x:Name="textBoxUserName"
                         Height="28"
-                        Margin="0,5,0,0"
+                        Margin="0,5,0,-1"
                         Padding="30,0,0,0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                         VerticalContentAlignment="Center"
+                        materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource loadColor1}"
                         BorderBrush="DarkGray"
                         BorderThickness="0,0,0,1"
                         CaretBrush="LightGray"
@@ -236,7 +237,7 @@
 
                     <TextBlock
                         Margin="10,10,0,0"
-                        FontFamily="Segoe UI Variable Display"
+                        FontFamily="Montserrat"
                         FontSize="14"
                         FontWeight="Medium"
                         Foreground="#D7596D"

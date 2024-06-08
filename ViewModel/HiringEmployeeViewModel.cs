@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using PersonnelManagementSystem.Model;
 
 namespace PersonnelManagementSystem.ViewModel
@@ -12,91 +15,153 @@ namespace PersonnelManagementSystem.ViewModel
     public class HiringEmployeeViewModel : ViewModelBase
     {
         // Fields
-        private EmployeeModel _employee;
+        private string _firstName;
+        private string _lastName;
+        private string _patronymic;
+        private string _gender;
+        private string _department;
+        private string _position;
+        private string _maritalStatus;
+        private string? _email;
+        private string? _telephone;
+        private string? _experience;
+        private string? _adress;
+        private BitmapImage _selectedImage;
+
+        private IEmployeeRepository _employeeRepository;
 
 
         //Properties
         public string FirstName
         {
-            get { return _employee.FirstName; }
+            get => _firstName;
             set
             {
-                _employee.FirstName = value;
+                _firstName = value;
                 OnPropertyChanged(nameof(FirstName));
             }
         }
-
         public string LastName
         {
-            get { return _employee.LastName; }
+            get => _lastName;
             set
             {
-                _employee.LastName = value;
+                _lastName = value;
                 OnPropertyChanged(nameof(LastName));
             }
         }
-
-        public string? MiddleName
+        public string Patronymic
         {
-            get { return _employee.MiddleName; }
+            get => _patronymic;
             set
             {
-                _employee.MiddleName = value;
-                OnPropertyChanged(nameof(MiddleName));
+                _patronymic = value;
+                OnPropertyChanged(nameof(Patronymic));
             }
         }
-
         public string Gender
         {
-            get { return _employee.Gender; }
+            get => _gender;
             set
             {
-                _employee.Gender = value;
+                _gender = value;
                 OnPropertyChanged(nameof(Gender));
             }
         }
-
-        public string? Adress
+        public string Department
         {
-            get { return _employee.Adress; }
+            get => _department;
             set
             {
-                _employee.Adress = value;
-                OnPropertyChanged(nameof(Adress));
+                _department = value;
+                OnPropertyChanged(nameof(Department));
             }
         }
-
-        public string? PhoneNumber
+        public string Position
         {
-            get { return _employee.CellPhoneNumber; }
+            get => _position;
             set
             {
-                _employee.CellPhoneNumber = value;
-                OnPropertyChanged(nameof(PhoneNumber));
+                _position = value;
+                OnPropertyChanged(nameof(Position));
             }
         }
-
-        public string? Email
+        public string MaritalStatus
         {
-            get { return _employee.Email; }
+            get => _maritalStatus;
             set
             {
-                _employee.Email = value;
+                _maritalStatus = value;
+                OnPropertyChanged(nameof(MaritalStatus));
+            }
+        }
+        public string Email
+        {
+            get => _email;
+            set
+            {
+                _email = value;
                 OnPropertyChanged(nameof(Email));
             }
         }
-        public IEnumerable<Gender> GenderValues
+        public string Telephone
         {
-            get { return Enum.GetValues(typeof(Gender)); }
+            get => _telephone;
+            set
+            {
+                _telephone = value;
+                OnPropertyChanged(nameof(Telephone));
+            }
         }
+        public BitmapImage SelectedImage
+        {
+            get { return _selectedImage; }
+            set
+            {
+                if(_selectedImage != value)
+                {
+                    _selectedImage = value;
+                    OnPropertyChanged(nameof(SelectedImage));
+                }
+            }
+        }
+
+        // Collections for displaying tables in ComboBox
+        public ObservableCollection<string> Genders { get; set; }
+        public ObservableCollection<string> Departments { get; set; }
+        public ObservableCollection<string> Positions { get; set; }
+        public ObservableCollection<string> MaritalStatuses { get; set; }
+
+        
+        // Commands
+        public ICommand LoadImageCommand { get; }
+        public ICommand SaveEmployeeCommand { get; }
+        public ICommand AddEmployeeCommand { get; }
 
         public HiringEmployeeViewModel()
         {
-            SelectedGender = Gender.Male;
+            Genders = new ObservableCollection<string>(new List<string> { "Мужской", "Женский" });
+
+            LoadImageCommand = new ViewModelCommand(ExecuteLoadImageCommand);
+            SaveEmployeeCommand = new ViewModelCommand(ExecuteSaveEmployeeCommand);
+            AddEmployeeCommand = new ViewModelCommand(ExecuteAddEmployeeCommand);
+
         }
 
+        // Realization Commands
+        private void ExecuteLoadImageCommand(object obj)
+        {
+            throw new NotImplementedException();
+        }
 
+        private void ExecuteSaveEmployeeCommand(object obj)
+        {
+            throw new NotImplementedException();
+        }
 
-        
+        private void ExecuteAddEmployeeCommand(object obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -6,16 +6,26 @@
     xmlns:local="clr-namespace:PersonnelManagementSystem.View"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:validation="clr-namespace:PersonnelManagementSystem.Validation"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ControlTemplate x:Key="ValidationTemplate">
+            <StackPanel>
+                <AdornedElementPlaceholder x:Name="AdornedElementPlaceholder" />
+                <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}" />
+            </StackPanel>
+        </ControlTemplate>
+
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="200" />
 
         </Grid.ColumnDefinitions>
-
 
         <Border
             Grid.Column="0"
@@ -27,8 +37,12 @@
                 <!--  Filling about personal infromation of employee  -->
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50" />
-                        <RowDefinition Height="50" />
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="60" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
@@ -38,73 +52,394 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
+
                         <TextBox
                             Grid.Column="0"
-                            Margin="5"
-                            VerticalContentAlignment="Center"
+                            Margin="5,0,0,0"
+                            VerticalAlignment="Center"
+                            materialDesign:ColorZoneAssist.Mode="PrimaryDark"
+                            materialDesign:HintAssist.FloatingHintHorizontalAlignment="Left"
+                            materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
+                            materialDesign:HintAssist.Hint="Имя"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
+                            materialDesign:ValidationAssist.HasError="True"
+                            BorderBrush="{StaticResource plainTextColor3}"
+                            CaretBrush="{StaticResource plainTextColor3}"
+                            FontFamily="Montserrat"
+                            FontSize="13"
+                            Foreground="{StaticResource titleColor2}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+
+                        <TextBox
+                            Grid.Column="1"
+                            Margin="5,0,0,0"
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.FloatingHintHorizontalAlignment="Left"
+                            materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
                             materialDesign:HintAssist.Hint="Фамилия"
                             materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
                             BorderBrush="{StaticResource plainTextColor3}"
-                            BorderThickness="0,0,0,1"
                             CaretBrush="{StaticResource plainTextColor3}"
                             FontFamily="Montserrat"
                             FontSize="13"
                             Foreground="{StaticResource titleColor2}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             Text="{Binding LastName}" />
-                        <TextBox
-                            Grid.Column="1"
-                            Margin="5"
-                            VerticalContentAlignment="Center"
-                            materialDesign:HintAssist.Hint="Имя"
-                            materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
-                            BorderBrush="{StaticResource plainTextColor3}"
-                            BorderThickness="0,0,0,1"
-                            CaretBrush="{StaticResource plainTextColor3}"
-                            FontFamily="Montserrat"
-                            FontSize="13"
-                            Foreground="{StaticResource titleColor2}"
-                            Text="{Binding FirstName}" />
+
                         <TextBox
                             Grid.Column="2"
-                            Margin="5"
-                            VerticalContentAlignment="Center"
-                            materialDesign:HintAssist.Hint="Отчество (при наличии)"
+                            Margin="5,0,0,0"
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.FloatingHintHorizontalAlignment="Left"
+                            materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
+                            materialDesign:HintAssist.HelperText="(при наличии)"
+                            materialDesign:HintAssist.HelperTextFontSize="10"
+                            materialDesign:HintAssist.Hint="Отчество"
                             materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
                             BorderBrush="{StaticResource plainTextColor3}"
-                            BorderThickness="0,0,0,1"
                             CaretBrush="{StaticResource plainTextColor3}"
                             FontFamily="Montserrat"
                             FontSize="13"
                             Foreground="{StaticResource titleColor2}"
-                            Text="{}" />
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     </Grid>
 
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="81.8" />
-                            <ColumnDefinition Width="25.6" />
-                            <ColumnDefinition Width="42.6" />
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="160" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
                         <ComboBox
-                            Grid.ColumnSpan="3"
+                            Grid.Column="0"
+                            Width="110"
                             Margin="5,0,5,0"
+                            materialDesign:ColorZoneAssist.Mode="PrimaryDark"
+                            materialDesign:HintAssist.Foreground="{StaticResource plainTextColor2}"
                             materialDesign:HintAssist.Hint="Пол"
                             materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
                             BorderBrush="{StaticResource plainTextColor3}"
-                            BorderThickness="0,0,0,1"
                             DisplayMemberPath="ToString"
                             FontFamily="Montserrat"
                             FontSize="13"
                             Foreground="{StaticResource titleColor2}"
-                            ItemsSource="{Binding GenderValues}"
-                            SelectedItem="{Binding SelectedGender}"
-                            Style="{DynamicResource MaterialDesignComboBox}" />
+                            Style="{DynamicResource MaterialDesignComboBox}">
+                            <ComboBoxItem Content="Мужской" />
+                            <ComboBoxItem Content="Женский" />
+                        </ComboBox>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
 
+                            <materialDesign:PackIcon
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Center"
+                                Foreground="{StaticResource plainTextColor2}"
+                                Kind="PhoneOutline" />
+
+                            <TextBox
+                                Width="135"
+                                Margin="5,0,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
+                                materialDesign:TransitionAssist.DisableTransitions="True"
+                                BorderBrush="{StaticResource plainTextColor3}"
+                                CaretBrush="{StaticResource plainTextColor3}"
+                                FontFamily="Montserrat"
+                                Foreground="{StaticResource titleColor2}"
+                                MaxLength="11"
+                                Text="{Binding PhoneNumber}" />
+                        </StackPanel>
+                        <TextBox
+                            Grid.Column="2"
+                            Margin="5,0,0,13.35"
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.FloatingHintHorizontalAlignment="Left"
+                            materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
+                            materialDesign:HintAssist.Hint="Адрес"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
+                            BorderBrush="{StaticResource plainTextColor3}"
+                            CaretBrush="{StaticResource plainTextColor3}"
+                            FontFamily="Montserrat"
+                            FontSize="13"
+                            Foreground="{StaticResource titleColor2}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
 
                     </Grid>
 
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+
+                        <ComboBox
+                            Grid.Column="0"
+                            Margin="5,5,10,-7"
+                            VerticalAlignment="Center"
+                            materialDesign:ColorZoneAssist.Mode="PrimaryDark"
+                            materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
+                            materialDesign:HintAssist.Hint="Семейное положение"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
+                            BorderBrush="{StaticResource plainTextColor3}"
+                            DisplayMemberPath="ToString"
+                            FontFamily="Montserrat"
+                            FontSize="13"
+                            Foreground="{StaticResource titleColor2}"
+                            Style="{DynamicResource MaterialDesignComboBox}">
+                            <ComboBoxItem Content="Женат" />
+                            <ComboBoxItem Content="Не женат" />
+                            <ComboBoxItem Content="Холост" />
+                            <ComboBoxItem Content="Замужем" />
+                            <ComboBoxItem Content="Не женат" />
+
+                        </ComboBox>
+
+                        <TextBox
+                            Grid.Column="1"
+                            Margin="5,0,0,0"
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.FloatingHintHorizontalAlignment="Left"
+                            materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
+                            materialDesign:HintAssist.HelperText="(при наличии)"
+                            materialDesign:HintAssist.HelperTextFontSize="10"
+                            materialDesign:HintAssist.Hint="Email"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
+                            BorderBrush="{StaticResource plainTextColor3}"
+                            CaretBrush="{StaticResource plainTextColor3}"
+                            FontFamily="Montserrat"
+                            FontSize="13"
+                            Foreground="{StaticResource titleColor2}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <TextBox
+                            Grid.Column="2"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.FloatingHintHorizontalAlignment="Left"
+                            materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
+                            materialDesign:HintAssist.Hint="Стаж работы"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
+                            BorderBrush="{StaticResource plainTextColor3}"
+                            CaretBrush="{StaticResource plainTextColor3}"
+                            FontFamily="Montserrat"
+                            FontSize="13"
+                            Foreground="{StaticResource titleColor2}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    </Grid>
+
+                    <Grid Grid.Row="3">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <ComboBox
+                                Grid.Column="0"
+                                Margin="5,0,10,0"
+                                VerticalAlignment="Center"
+                                materialDesign:ColorZoneAssist.Mode="PrimaryDark"
+                                materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
+                                materialDesign:HintAssist.Hint="Структурное подразделение"
+                                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
+                                BorderBrush="{StaticResource plainTextColor3}"
+                                DisplayMemberPath="ToString"
+                                FontFamily="Montserrat"
+                                FontSize="13"
+                                Foreground="{StaticResource titleColor2}"
+                                Style="{DynamicResource MaterialDesignComboBox}">
+                                <ComboBoxItem Content="Женат" />
+                                <ComboBoxItem Content="Не женат" />
+                                <ComboBoxItem Content="Холост" />
+                                <ComboBoxItem Content="Замужем" />
+                                <ComboBoxItem Content="Не женат" />
+
+                            </ComboBox>
+                            <ComboBox
+                                Grid.Column="1"
+                                Margin="5,0,10,0"
+                                VerticalAlignment="Center"
+                                materialDesign:ColorZoneAssist.Mode="PrimaryDark"
+                                materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
+                                materialDesign:HintAssist.Hint="Должность"
+                                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
+                                BorderBrush="{StaticResource plainTextColor3}"
+                                DisplayMemberPath="ToString"
+                                FontFamily="Montserrat"
+                                FontSize="13"
+                                Foreground="{StaticResource titleColor2}"
+                                Style="{DynamicResource MaterialDesignComboBox}">
+                                <ComboBoxItem Content="Женат" />
+                                <ComboBoxItem Content="Не женат" />
+                                <ComboBoxItem Content="Холост" />
+                                <ComboBoxItem Content="Замужем" />
+                                <ComboBoxItem Content="Не женат" />
+                            </ComboBox>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox
+                            Grid.Column="0"
+                            Margin="5,0,0,0"
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.FloatingHintHorizontalAlignment="Left"
+                            materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
+                            materialDesign:HintAssist.Hint="Оклад"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
+                            BorderBrush="{StaticResource plainTextColor3}"
+                            CaretBrush="{StaticResource plainTextColor3}"
+                            FontFamily="Montserrat"
+                            FontSize="13"
+                            Foreground="{StaticResource titleColor2}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <TextBox
+                            Grid.Column="1"
+                            Margin="5,0,0,0"
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.FloatingHintHorizontalAlignment="Left"
+                            materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
+                            materialDesign:HintAssist.Hint="Ставка"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
+                            BorderBrush="{StaticResource plainTextColor3}"
+                            CaretBrush="{StaticResource plainTextColor3}"
+                            FontFamily="Montserrat"
+                            FontSize="13"
+                            Foreground="{StaticResource titleColor2}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <ComboBox
+                            Grid.Column="2"
+                            Margin="5,5,10,-6.5"
+                            VerticalAlignment="Center"
+                            materialDesign:ColorZoneAssist.Mode="PrimaryDark"
+                            materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
+                            materialDesign:HintAssist.Hint="Виды работ"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
+                            BorderBrush="{StaticResource plainTextColor3}"
+                            DisplayMemberPath="ToString"
+                            FontFamily="Montserrat"
+                            FontSize="13"
+                            Foreground="{StaticResource titleColor2}"
+                            Style="{DynamicResource MaterialDesignComboBox}">
+                            <ComboBoxItem Content="Административные" />
+                            <ComboBoxItem Content="Производственные" />
+
+                        </ComboBox>
+
+                    </Grid>
+
+                    <Grid Grid.Row="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="1.5*" />
+                        </Grid.ColumnDefinitions>
+
+                        <DatePicker
+                            Grid.Column="0"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Stretch"
+                            materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
+                            materialDesign:HintAssist.Hint="Дата составления трудового договора"
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
+                            BorderBrush="{StaticResource plainTextColor3}"
+                            FontFamily="Montserrat"
+                            FontSize="13"
+                            Foreground="{StaticResource titleColor2}"
+                            Language="ru-RU"
+                            Text="{Binding}">
+                            <DatePicker.Resources>
+                                <Style
+                                    x:Key="CustomCalendarDayButton"
+                                    BasedOn="{StaticResource MaterialDesignCalendarDayButton}"
+                                    TargetType="CalendarDayButton">
+                                    <Setter Property="materialDesign:CalendarAssist.SelectionColor" Value="{StaticResource MaterialDesign.Brush.Primary.Light}" />
+                                    <Setter Property="materialDesign:CalendarAssist.SelectionForegroundColor" Value="Black" />
+                                </Style>
+                                <Style
+                                    x:Key="CustomCalendarButton"
+                                    BasedOn="{StaticResource MaterialDesignCalendarButton}"
+                                    TargetType="CalendarButton">
+                                    <Setter Property="materialDesign:CalendarAssist.SelectionColor" Value="#B2F39B" />
+                                    <Setter Property="materialDesign:CalendarAssist.SelectionForegroundColor" Value="Black" />
+                                </Style>
+                                <Style
+                                    x:Key="CustomCalendar"
+                                    BasedOn="{StaticResource MaterialDesignDatePickerCalendarPortrait}"
+                                    TargetType="{x:Type Calendar}">
+                                    <Setter Property="Background" Value="#343C3F" />
+                                    <Setter Property="CalendarButtonStyle" Value="{StaticResource CustomCalendarButton}" />
+                                    <Setter Property="CalendarDayButtonStyle" Value="{StaticResource CustomCalendarDayButton}" />
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter Property="materialDesign:CalendarAssist.HeaderBackground" Value="{StaticResource MaterialDesign.Brush.Primary}" />
+                                    <Setter Property="materialDesign:CalendarAssist.HeaderForeground" Value="Black" />
+                                </Style>
+                                <Style BasedOn="{StaticResource MaterialDesignFloatingHintDatePicker}" TargetType="DatePicker">
+                                    <Setter Property="CalendarStyle" Value="{StaticResource CustomCalendar}" />
+                                </Style>
+                            </DatePicker.Resources>
+
+                        </DatePicker>
+
+
+                        <DatePicker
+                            Grid.Column="1"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Stretch"
+                            materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
+                            materialDesign:HintAssist.Hint="Дата составления трудового договора"
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
+                            BorderBrush="{StaticResource plainTextColor3}"
+                            FontFamily="Montserrat"
+                            FontSize="13"
+                            Foreground="{StaticResource titleColor2}"
+                            Language="ru-RU"
+                            Text="{Binding}">
+                            <DatePicker.Resources>
+                                <Style
+                                    x:Key="CustomCalendarDayButton"
+                                    BasedOn="{StaticResource MaterialDesignCalendarDayButton}"
+                                    TargetType="CalendarDayButton">
+                                    <Setter Property="materialDesign:CalendarAssist.SelectionColor" Value="{StaticResource MaterialDesign.Brush.Primary.Light}" />
+                                    <Setter Property="materialDesign:CalendarAssist.SelectionForegroundColor" Value="Black" />
+                                </Style>
+                                <Style
+                                    x:Key="CustomCalendarButton"
+                                    BasedOn="{StaticResource MaterialDesignCalendarButton}"
+                                    TargetType="CalendarButton">
+                                    <Setter Property="materialDesign:CalendarAssist.SelectionColor" Value="#B2F39B" />
+                                    <Setter Property="materialDesign:CalendarAssist.SelectionForegroundColor" Value="Black" />
+                                </Style>
+                                <Style
+                                    x:Key="CustomCalendar"
+                                    BasedOn="{StaticResource MaterialDesignDatePickerCalendarPortrait}"
+                                    TargetType="{x:Type Calendar}">
+                                    <Setter Property="Background" Value="#343C3F" />
+                                    <Setter Property="CalendarButtonStyle" Value="{StaticResource CustomCalendarButton}" />
+                                    <Setter Property="CalendarDayButtonStyle" Value="{StaticResource CustomCalendarDayButton}" />
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter Property="materialDesign:CalendarAssist.HeaderBackground" Value="{StaticResource MaterialDesign.Brush.Primary}" />
+                                    <Setter Property="materialDesign:CalendarAssist.HeaderForeground" Value="Black" />
+                                </Style>
+                                <Style BasedOn="{StaticResource MaterialDesignFloatingHintDatePicker}" TargetType="DatePicker">
+                                    <Setter Property="CalendarStyle" Value="{StaticResource CustomCalendar}" />
+                                </Style>
+                            </DatePicker.Resources>
+
+                        </DatePicker>
+
+
+
+                    </Grid>
                 </Grid>
 
             </Grid>
@@ -121,7 +456,27 @@
                 Margin="5,0,0,5"
                 Padding="10"
                 Background="{StaticResource panelColor}"
-                CornerRadius="10" />
+                CornerRadius="10">
+
+                <StackPanel Orientation="Vertical">
+                    <Image
+                        Width="130"
+                        Height="200"
+                        Margin="0,20,0,0"
+                        Source="{Binding SelectedImage}" />
+                    <Button
+                        Height="40"
+                        materialDesign:ButtonAssist.CornerRadius="10"
+                        Command="{Binding LoadImageCommand}"
+                        Content="Загрузка фото"
+                        FontFamily="Montserrat"
+                        FontSize="13"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        ToolTip="MaterialDesignRaisedDarkButton with Round Corners" />
+                </StackPanel>
+            </Border>
+
 
             <Border
                 Grid.Row="1"
@@ -130,17 +485,18 @@
                 Background="{StaticResource panelColor}"
                 CornerRadius="10">
                 <Button
-                    Height="40"
+                    Height="60"
                     materialDesign:ButtonAssist.CornerRadius="10"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     ToolTip="MaterialDesignRaisedButton with Round Corners">
-                    <TextBlock Text="Добавить сотрудника"
-                               HorizontalAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Добавить сотрудника" />
                 </Button>
             </Border>
 
         </Grid>
+
+
 
     </Grid>
 

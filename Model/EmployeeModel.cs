@@ -14,13 +14,13 @@ namespace PersonnelManagementSystem.Model
         public string MartialStatus { get; set; }
         public string Post { get; set; }
         public string Department { get; set; }
-        public DateOnly HireDate { get; set; }
-        public DateOnly DateOfLeaving { get; set; }
+        public string HireDate { get; set; }
+        public string? DateOfLeaving { get; set; }
         public decimal Salary { get; set; }
         public string? CellPhoneNumber { get; set; }
         public string? Email { get; set; }
         public string? Adress { get; set; }
-        public byte[]? Photo { get; set; }
+        public byte[]? Image { get; set; }
 
     }
 }

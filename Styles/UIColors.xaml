@@ -35,5 +35,10 @@
     <SolidColorBrush x:Key="panelActiveColor" Color="#2B1372" />
 
     <!--  Button Colors  -->
-
+    
+    <!-- Load Colors-->
+    <SolidColorBrush x:Key="loadColor1" Color="#6A439D"/>
+    
+    <!--Login border Colors-->
+    <SolidColorBrush x:Key="loginColor1" Color="#F48DBF"/>
 </ResourceDictionary>

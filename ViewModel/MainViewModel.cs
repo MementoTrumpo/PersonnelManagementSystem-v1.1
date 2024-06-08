@@ -87,16 +87,23 @@ namespace PersonnelManagementSystem.ViewModel
             // Initialize Commands
             ShowEmployeeViewCommand = new ViewModelCommand(ExecuteShowEmployeeViewCommand);
             ShowPersonalCardViewCommand = new ViewModelCommand(ExecuteShowPersonalCardViewCommand);
-
+            ShowHiringEmployeeViewCommand = new ViewModelCommand(ExecuteHiringEmployeeViewCommand);
             // Default View
             ExecuteShowEmployeeViewCommand(null);
 
             LoadCurrentUserData();
         }
 
+        private void ExecuteHiringEmployeeViewCommand(object obj)
+        {
+            CurrentChildView = new HiringEmployeeViewModel();
+            Caption = "Приём";
+            Icon = IconChar.AddressBook;
+        }
+
         private void ExecuteShowPersonalCardViewCommand(object obj)
         {
-            CurrentChildView = new EmployeeViewModel();
+            CurrentChildView = new PersonalCardViewModel();
             Caption = "Личная карточка";
             Icon = IconChar.IdCard;
          
@@ -111,8 +118,8 @@ namespace PersonnelManagementSystem.ViewModel
 
         private void LoadCurrentUserData()
         {
-            UserModel user = null; /*userRepository.GetByUserName(Thread.CurrentPrincipal.Identity.Name);*/
-            if(user != null)
+            UserModel user = userRepository.GetByUserName(Thread.CurrentPrincipal.Identity.Name);
+            if (user != null)
             {
                 CurrentUserAccount.Username = user.UserName;
                 CurrentUserAccount.DisplayName = $"{user.LastName} {user.FirstName}";

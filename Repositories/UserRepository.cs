@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PersonnelManagementSystem.Repositories
 {
-    public class UserRepository : RepositoryBase, IUserRepository
+    public class UserRepository : RepositoryUserBase, IUserRepository
     {
         public void Add(UserModel user)
         {
@@ -25,7 +25,7 @@ namespace PersonnelManagementSystem.Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "select * from  [User] where name_user=@username and [password]=@password";
+                command.CommandText = "select * from [User] where name_user=@username and [password]=@password";
                 command.Parameters.Add("@username", SqlDbType.NVarChar).Value = credential.UserName;
                 command.Parameters.Add("@password", SqlDbType.NVarChar).Value = credential.Password;
                 validUser = command.ExecuteScalar() == null ? false : true;
