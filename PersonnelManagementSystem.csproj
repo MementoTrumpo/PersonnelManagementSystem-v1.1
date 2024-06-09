@@ -12,6 +12,7 @@
     <None Remove="Fonts\Montserrat-Regular.ttf" />
     <None Remove="Fonts\Racama.otf" />
     <None Remove="Images\account.png" />
+    <None Remove="Images\employee_icon.png" />
     <None Remove="Images\hide_password.png" />
     <None Remove="Images\logo2.png" />
     <None Remove="Images\padlock %281%29.png" />
@@ -23,6 +24,7 @@
     <Resource Include="Images\account.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\employee_icon.png" />
     <Resource Include="Images\hide_password.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

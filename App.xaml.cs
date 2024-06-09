@@ -15,6 +15,12 @@ namespace PersonnelManagementSystem
     {
         private void ApplicationStart(object sender, StartupEventArgs e)
         {
+            //// Для тестов HiringEmployeeView
+            //// Открываем главную форму
+            //var mainView = new MainView();
+            //mainView.Show();
+
+
             var loginView = new LoginView();
             loginView.Show();
 
@@ -28,7 +34,7 @@ namespace PersonnelManagementSystem
 
                     // Создаем таймер с интервалом в 4 секунды
                     var timer = new DispatcherTimer();
-                    timer.Interval = TimeSpan.FromSeconds(4);
+                    timer.Interval = TimeSpan.FromSeconds(1);
                     timer.Tick += (sender, args) =>
                     {
                         // Останавливаем таймер

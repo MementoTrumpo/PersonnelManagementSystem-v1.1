@@ -24,7 +24,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="200" />
-
         </Grid.ColumnDefinitions>
 
         <Border
@@ -60,13 +59,14 @@
                             materialDesign:ColorZoneAssist.Mode="PrimaryDark"
                             materialDesign:HintAssist.FloatingHintHorizontalAlignment="Left"
                             materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
-                            materialDesign:HintAssist.Hint="Имя"
+                            materialDesign:HintAssist.Hint="Фамилия"
                             materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
                             materialDesign:ValidationAssist.HasError="True"
                             BorderBrush="{StaticResource plainTextColor3}"
                             CaretBrush="{StaticResource plainTextColor3}"
                             FontFamily="Montserrat"
                             FontSize="13"
+                            Text="{Binding LastName, Mode=TwoWay}"
                             Foreground="{StaticResource titleColor2}"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
 
@@ -77,7 +77,7 @@
                             VerticalAlignment="Center"
                             materialDesign:HintAssist.FloatingHintHorizontalAlignment="Left"
                             materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
-                            materialDesign:HintAssist.Hint="Фамилия"
+                            materialDesign:HintAssist.Hint="Имя"
                             materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
                             BorderBrush="{StaticResource plainTextColor3}"
                             CaretBrush="{StaticResource plainTextColor3}"
@@ -85,7 +85,7 @@
                             FontSize="13"
                             Foreground="{StaticResource titleColor2}"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                            Text="{Binding LastName}" />
+                            Text="{Binding FirstName, Mode=TwoWay}" />
 
                         <TextBox
                             Grid.Column="2"
@@ -101,6 +101,7 @@
                             CaretBrush="{StaticResource plainTextColor3}"
                             FontFamily="Montserrat"
                             FontSize="13"
+                            Text="{Binding Patronymic, Mode=TwoWay}"
                             Foreground="{StaticResource titleColor2}"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     </Grid>
@@ -121,14 +122,12 @@
                             materialDesign:HintAssist.Hint="Пол"
                             materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
                             BorderBrush="{StaticResource plainTextColor3}"
-                            DisplayMemberPath="ToString"
                             FontFamily="Montserrat"
                             FontSize="13"
                             Foreground="{StaticResource titleColor2}"
-                            Style="{DynamicResource MaterialDesignComboBox}">
-                            <ComboBoxItem Content="Мужской" />
-                            <ComboBoxItem Content="Женский" />
-                        </ComboBox>
+                            ItemsSource="{Binding Genders, Mode=TwoWay}"
+                            SelectedItem="{Binding Gender, Mode=TwoWay}"
+                            Style="{DynamicResource MaterialDesignComboBox}" />
                         <StackPanel Grid.Column="1" Orientation="Horizontal">
 
                             <materialDesign:PackIcon
@@ -142,6 +141,7 @@
                                 Margin="5,0,0,0"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
+                                materialDesign:HintAssist.Hint="Номер телефона"
                                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
                                 materialDesign:TransitionAssist.DisableTransitions="True"
                                 BorderBrush="{StaticResource plainTextColor3}"
@@ -149,7 +149,7 @@
                                 FontFamily="Montserrat"
                                 Foreground="{StaticResource titleColor2}"
                                 MaxLength="11"
-                                Text="{Binding PhoneNumber}" />
+                                Text="{Binding Telephone, Mode=TwoWay}" />
                         </StackPanel>
                         <TextBox
                             Grid.Column="2"
@@ -163,6 +163,7 @@
                             CaretBrush="{StaticResource plainTextColor3}"
                             FontFamily="Montserrat"
                             FontSize="13"
+                            Text="{Binding Adress, Mode=TwoWay}"
                             Foreground="{StaticResource titleColor2}"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
 
@@ -185,18 +186,12 @@
                             materialDesign:HintAssist.Hint="Семейное положение"
                             materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
                             BorderBrush="{StaticResource plainTextColor3}"
-                            DisplayMemberPath="ToString"
                             FontFamily="Montserrat"
                             FontSize="13"
                             Foreground="{StaticResource titleColor2}"
-                            Style="{DynamicResource MaterialDesignComboBox}">
-                            <ComboBoxItem Content="Женат" />
-                            <ComboBoxItem Content="Не женат" />
-                            <ComboBoxItem Content="Холост" />
-                            <ComboBoxItem Content="Замужем" />
-                            <ComboBoxItem Content="Не женат" />
-
-                        </ComboBox>
+                            ItemsSource="{Binding MaritalStatuses, Mode=TwoWay}"
+                            SelectedItem="{Binding MaritalStatus, Mode=TwoWay}"
+                            Style="{DynamicResource MaterialDesignComboBox}" />
 
                         <TextBox
                             Grid.Column="1"
@@ -212,6 +207,7 @@
                             CaretBrush="{StaticResource plainTextColor3}"
                             FontFamily="Montserrat"
                             FontSize="13"
+                            Text="{Binding Email, Mode=TwoWay}"
                             Foreground="{StaticResource titleColor2}"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         <TextBox
@@ -221,12 +217,14 @@
                             VerticalAlignment="Center"
                             materialDesign:HintAssist.FloatingHintHorizontalAlignment="Left"
                             materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
+                            materialDesign:HintAssist.HelperText="(при наличии)"
                             materialDesign:HintAssist.Hint="Стаж работы"
                             materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
                             BorderBrush="{StaticResource plainTextColor3}"
                             CaretBrush="{StaticResource plainTextColor3}"
                             FontFamily="Montserrat"
                             FontSize="13"
+                            Text="{Binding Experience, Mode=TwoWay}"
                             Foreground="{StaticResource titleColor2}"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     </Grid>
@@ -243,21 +241,15 @@
                                 VerticalAlignment="Center"
                                 materialDesign:ColorZoneAssist.Mode="PrimaryDark"
                                 materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
-                                materialDesign:HintAssist.Hint="Структурное подразделение"
+                                materialDesign:HintAssist.Hint="Отдел"
                                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
                                 BorderBrush="{StaticResource plainTextColor3}"
-                                DisplayMemberPath="ToString"
                                 FontFamily="Montserrat"
                                 FontSize="13"
                                 Foreground="{StaticResource titleColor2}"
-                                Style="{DynamicResource MaterialDesignComboBox}">
-                                <ComboBoxItem Content="Женат" />
-                                <ComboBoxItem Content="Не женат" />
-                                <ComboBoxItem Content="Холост" />
-                                <ComboBoxItem Content="Замужем" />
-                                <ComboBoxItem Content="Не женат" />
-
-                            </ComboBox>
+                                ItemsSource="{Binding Departments, Mode=TwoWay}"
+                                SelectedItem="{Binding Department, Mode=TwoWay}"
+                                Style="{DynamicResource MaterialDesignComboBox}" />
                             <ComboBox
                                 Grid.Column="1"
                                 Margin="5,0,10,0"
@@ -267,17 +259,12 @@
                                 materialDesign:HintAssist.Hint="Должность"
                                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
                                 BorderBrush="{StaticResource plainTextColor3}"
-                                DisplayMemberPath="ToString"
                                 FontFamily="Montserrat"
                                 FontSize="13"
                                 Foreground="{StaticResource titleColor2}"
-                                Style="{DynamicResource MaterialDesignComboBox}">
-                                <ComboBoxItem Content="Женат" />
-                                <ComboBoxItem Content="Не женат" />
-                                <ComboBoxItem Content="Холост" />
-                                <ComboBoxItem Content="Замужем" />
-                                <ComboBoxItem Content="Не женат" />
-                            </ComboBox>
+                                ItemsSource="{Binding Positions, Mode=TwoWay}"
+                                SelectedItem="{Binding Position, Mode=TwoWay}"
+                                Style="{DynamicResource MaterialDesignComboBox}" />
                         </Grid>
                     </Grid>
 
@@ -299,6 +286,7 @@
                             CaretBrush="{StaticResource plainTextColor3}"
                             FontFamily="Montserrat"
                             FontSize="13"
+                            Text="{Binding Salary, Mode=TwoWay}"
                             Foreground="{StaticResource titleColor2}"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         <TextBox
@@ -313,6 +301,7 @@
                             CaretBrush="{StaticResource plainTextColor3}"
                             FontFamily="Montserrat"
                             FontSize="13"
+                            Text="{Binding Rate, Mode=TwoWay}"
                             Foreground="{StaticResource titleColor2}"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         <ComboBox
@@ -324,15 +313,12 @@
                             materialDesign:HintAssist.Hint="Виды работ"
                             materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
                             BorderBrush="{StaticResource plainTextColor3}"
-                            DisplayMemberPath="ToString"
                             FontFamily="Montserrat"
                             FontSize="13"
                             Foreground="{StaticResource titleColor2}"
-                            Style="{DynamicResource MaterialDesignComboBox}">
-                            <ComboBoxItem Content="Административные" />
-                            <ComboBoxItem Content="Производственные" />
-
-                        </ComboBox>
+                            ItemsSource="{Binding TypesOfWork, Mode=TwoWay}"
+                            SelectedItem="{Binding TypeOfWork, Mode=TwoWay}"
+                            Style="{DynamicResource MaterialDesignComboBox}" />
 
                     </Grid>
 
@@ -347,7 +333,7 @@
                             Margin="5,0,0,0"
                             HorizontalAlignment="Stretch"
                             materialDesign:HintAssist.Foreground="{StaticResource plainTextColor3}"
-                            materialDesign:HintAssist.Hint="Дата составления трудового договора"
+                            materialDesign:HintAssist.Hint="Дата принятия на работу"
                             materialDesign:TextFieldAssist.HasClearButton="True"
                             materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color11}"
                             BorderBrush="{StaticResource plainTextColor3}"
@@ -355,7 +341,7 @@
                             FontSize="13"
                             Foreground="{StaticResource titleColor2}"
                             Language="ru-RU"
-                            Text="{Binding}">
+                            Text="{Binding DateAppointment, Mode=TwoWay}">
                             <DatePicker.Resources>
                                 <Style
                                     x:Key="CustomCalendarDayButton"
@@ -403,7 +389,7 @@
                             FontSize="13"
                             Foreground="{StaticResource titleColor2}"
                             Language="ru-RU"
-                            Text="{Binding}">
+                            Text="{Binding DateContract, Mode=TwoWay}">
                             <DatePicker.Resources>
                                 <Style
                                     x:Key="CustomCalendarDayButton"
@@ -462,7 +448,7 @@
                     <Image
                         Width="130"
                         Height="200"
-                        Margin="0,20,0,0"
+                        Margin="0,20,0,10"
                         Source="{Binding SelectedImage}" />
                     <Button
                         Height="40"
@@ -487,6 +473,7 @@
                 <Button
                     Height="60"
                     materialDesign:ButtonAssist.CornerRadius="10"
+                    Command="{Binding AddEmployeeCommand}"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     ToolTip="MaterialDesignRaisedButton with Round Corners">

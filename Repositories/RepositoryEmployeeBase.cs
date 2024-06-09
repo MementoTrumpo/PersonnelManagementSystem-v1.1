@@ -13,7 +13,7 @@ namespace PersonnelManagementSystem.Repositories
 
         public RepositoryEmployeeBase()
         {
-            _connectionString = "Server=DESKTOP-GVD6PAR; Database=dbUsers; Integrated Security=true";
+            _connectionString = "Server=DESKTOP-GVD6PAR; Database=dbEmployees; Integrated Security=true";
         }
 
         protected SqlConnection GetConnection()
